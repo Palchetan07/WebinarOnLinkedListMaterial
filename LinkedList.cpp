@@ -54,6 +54,10 @@ void insertAfter(int nodeAfter, int data) {
 		while(temp->data != nodeAfter) {
 			temp = temp->next;
 		}
+		if(temp == NULL) {
+			cout << "The node can't be inserted." << endl;
+			return;
+		}
 		struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
 		new_node->data = data;
 		new_node->next = temp->next;

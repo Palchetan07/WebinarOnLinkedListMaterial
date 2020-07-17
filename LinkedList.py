@@ -56,6 +56,10 @@ class LinkedList:
 			while h.data != nodeAfter:
 				h = h.next
 
+			if h is None:
+				print("The node can't be inserted");
+				return;
+
 			new_node = Node(key) 
 			new_node.next = h.next
 			h.next = new_node

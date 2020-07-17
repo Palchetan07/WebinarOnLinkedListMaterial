@@ -83,12 +83,17 @@ class LinkedList {
 		Node h = head;
 		if(h == null) {
 			System.out.println("The node can't be inserted in this case as node " + nodeAfter + " doesn't exists.");
-			return;
 		}
 		else { 
 			while(h.data != nodeAfter) {
 				h = h.next;
 			}
+
+			if(h==null) {
+				System.out.println("Node doesn't exist.");
+				return;
+			}
+
 			Node temp = new Node(key);
 			temp.next = h.next;
 			h.next = temp;
