@@ -23,7 +23,7 @@ class Node:
 		self.next = None # None is nothing but null 
 
 # Creating a class for implementing the code for Insertion in a Linked List
-class LinkedList: 
+class LinkedListInsertion: 
 	
 	# Whenever I'll create the object of a LinkedList class head will be pointing to null initially
 	def __init__(self): 
@@ -91,7 +91,7 @@ class LinkedList:
 # Code execution starts here 
 if __name__=='__main__': 
 
-	myList = LinkedList() 
+	myList = LinkedListInsertion() 
 
 	# myList.insertionAtEnd(1)
 	# print("Initial Linked List: ", end = " ")
