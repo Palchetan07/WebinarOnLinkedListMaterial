@@ -4,12 +4,18 @@
 #   @author
 #   Aakash Verma
 #	
-# 	Nth Node from the Last of a Linked List
+# 	Middle Of a Linked List
 #
 #	Output: 
 #
+#	Original List is:  3 4 5 6 7 
+#	Middle of List is: 5
 #	Original List is:  3 4 5 6 7 9 
-#	6
+#	Middle of List is: 6
+#
+#	Note: In case of even number of nodes, we are printing the ((n/2)+1)th node. 
+#	If you want to print (n/2)th node you can customize your code as per your requirement.	
+#
 #
 
 
@@ -20,7 +26,7 @@ class Node:
 		self.data = data
 		self.next = None # None is nothing but null 
 
-# Creating a class for implementing the code for nth Node from end in a Linked List
+# Creating a class for implementing the code for Middle in a Linked List
 class LinkedList: 
 	
 	# Whenever I'll create the object of a LinkedList class head will be pointing to null initially
@@ -50,32 +56,23 @@ class LinkedList:
 			h = h.next
 		print()
 
-	# nth Node from end
-	def nthNodeFromEnd(self, nthNode):
-		prev = self.head
-		curr = self.head
+	# middle of a linked list
+	def findMiddle(self):
+		fast = self.head
+		slow = self.head
 
 		if self.head is None:
 			print("The list doesn't exist.")
 			return
 
-		# curr pointer is being moved ahead n times.
-		for i in range(nthNode):
-			if curr is not None:
-				curr = curr.next
-			else:
-				print("Enough nodes are not present in the linked list.")
-				return
+		# move one pointer one time & other pointer two times
+		# which will result fast pointer at the end and slow pointer in the middle of a list
+		while fast is not None and fast.next is not None:
+			slow = slow.next
+			fast = fast.next.next
 
-		# Now the difference between prev and curr pointer is n
-
-		# now we'll move prev and curr pointer both until curr becomes null and finally prev will be at n from last
-		while curr is not None:
-			curr = curr.next
-			prev = prev.next
-
-		# finally printing data of nth node from last
-		print(prev.data)
+		# finally printing data of middle of linked list
+		print(slow.data)
 
 
 # Code execution starts here 
@@ -87,8 +84,16 @@ if __name__=='__main__':
 	myList.append(5)
 	myList.append(6)
 	myList.append(7)
-	myList.append(9) 
+
 	print("Original List is: ", end = " ")
 	myList.printList()
-	myList.nthNodeFromEnd(3)
+	print("Middle of List is:", end = " ")
+	myList.findMiddle()
+
+	myList.append(9)
+
+	print("Original List is: ", end = " ")
+	myList.printList()
+	print("Middle of List is:", end = " ")
+	myList.findMiddle()
 

@@ -3,13 +3,17 @@
 *   @author
 *   Aakash Verma
 *	
-* 	Nth Node from the Last of a Linked List
+* 	Middle in a Linked List
 *
 *	Output: 
 *
 *	The list is: 3 4 5 6 7 
-*	5
-* 	
+*	Middle Of List is: 5
+*	The list is: 3 4 5 6 7 8 
+*	Middle Of List is: 6
+*
+* 	Note: In case of even number of nodes, we are printing the ((n/2)+1)th node. 
+*	If you want to print (n/2)th node you can customize your code as per your requirement.	
 *
 *
 */
@@ -26,12 +30,12 @@ class Node {
 	}
 }
 
-/* Creating a class for implementing the code for Deletion in a Linked List. */
-class LinkedListNthFromEnd {
+/* Creating a class for implementing the code for Middle in a Linked List. */
+class MiddleOfLinkedList {
 
 	static Node head;
 
-	LinkedListNthFromEnd() {
+	MiddleOfLinkedList() {
 		head = null;
 	}
 
@@ -64,43 +68,33 @@ class LinkedListNthFromEnd {
 		System.out.println();
 	}
 
-	/* Utility code for getting nth node from last of the linked list. */
-	void nthNodeFromEnd(int nthNode) {
-		Node prev, curr;
-		prev = curr = head;
+	/* Utility code for getting middle of the linked list. */
+	void findMiddle() {
+		Node fast, slow;
+		fast = slow = head;
 
 		if(head == null) {
 			System.out.println("The list doesn't exist");
 			return;
 		}
 
-		/* curr pointer is being moved ahead n times. */
-		for(int i = 0; i < nthNode; i++) {
-			if(curr != null) {
-				curr = curr.next;
-			}
-			else {
-				System.out.println("Enough nodes are not present in the linked list.");
-				return;
-			}
+		/* 
+			move one pointer one time & other pointer two times
+			which will result fast pointer at the end and slow pointer in the middle of a list
+		*/
+		while(fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
 		}
 
-		// Now the difference between prev and curr pointer is n
-
-		/* now we'll move prev and curr pointer both until curr becomes null and finally prev will be at n from last */
-		while(curr != null) {
-			prev = prev.next;
-			curr = curr.next;
-		}
-
-		/* finally printing data of nth node from last */
-		System.out.println(prev.data);
+		/* finally printing data of middle of list */
+		System.out.println(slow.data);
 
 	}
 
 	/* Main method. */
 	public static void main(String args[]) {
-		LinkedListNthFromEnd list = new LinkedListNthFromEnd();
+		MiddleOfLinkedList list = new MiddleOfLinkedList();
 		list.push(3);
 		list.push(4);
 		list.push(5);
@@ -108,7 +102,17 @@ class LinkedListNthFromEnd {
 		list.push(7);
 		System.out.print("The list is: ");
 		list.printList();
-		list.nthNodeFromEnd(3);
+		System.out.print("Middle Of List is: ");
+		list.findMiddle();
+
+		list.push(8);
+
+		System.out.print("The list is: ");
+		list.printList();
+		System.out.print("Middle Of List is: ");
+		list.findMiddle();
+
+
 		System.out.println();
 
 	}

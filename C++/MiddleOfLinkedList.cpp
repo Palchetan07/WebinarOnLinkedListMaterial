@@ -2,13 +2,17 @@
 	@author
    	Aakash Verma
 	
- 	Deletion in Linked List
+ 	Given a Linked List, find the nth node from the end of a linked list.
 
  	Output:
 
 	Original List is: 2 3 4 5 6 
-	After Deletion: 2 3 4 6 
+	Middle of List is: 4
+	Original List is: 2 3 4 5 6 7 
+	Middle of List is: 5
 
+	Note: In case of even number of nodes, we are printing the ((n/2)+1)th node. 
+	If you want to print (n/2)th node you can customize your code as per your requirement.
 
 	Compile using:  g++ filename.cpp
 	Run using: ./a.out filename.cpp
@@ -50,31 +54,30 @@ void push(int data) {
 	}
 }
 
-void deletNode(int data) {
-	Node *temp, *prev;
-	temp = head;
-	prev = NULL;
+/* Utility function to find the nth Node from the end. */
+void findMiddle() {
+	Node *slow, *fast;
+	slow = head;
+	fast = head;
 
-	if(temp == NULL) {
-		cout << "The list is empty, the node can't be deleted." << endl;
+	if(head == NULL) {
+		cout << "The list doesn't exist." << endl;
 		return;
 	}
 
-	if(temp->data == data) {
-		head = temp->next;
-		return;
+	/* 
+		move one pointer one time & other pointer two times
+		which will result fast pointer at the end and slow pointer in the middle of a list
+	 
+	*/
+	while (fast != NULL && fast->next != NULL) {
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
-	while(temp != NULL && temp->data != data) {
-		prev = temp;
-		temp = temp->next;
-	}
+	/* finally printing data of middle of list */
+	cout << slow->data << endl;
 
-	if(temp == NULL) {
-		cout << "The key is not present in the list." << endl;
-		return;
-	}
-	prev->next = temp->next;
 }
 
 /* for printing a ist */
@@ -97,11 +100,18 @@ int main() {
 	push(4);
 	push(5);
 	push(6);
+
 	cout<<"Original List is: ";
 	printList();
-	deletNode(5);
-	cout<<"After Deletion: ";
+	cout<<"Middle of List is: ";
+	findMiddle();
+
+	push(7);
+
+	cout<<"Original List is: ";
 	printList();
+	cout<<"Middle of List is: ";
+	findMiddle();
 
 	return 0;
 

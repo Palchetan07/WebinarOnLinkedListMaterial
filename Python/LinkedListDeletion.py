@@ -4,7 +4,7 @@
 #   @author
 #   Aakash Verma
 #	
-# 	Insertions in Linked List
+# 	Deletion in Linked List
 #
 #	Output: 
 #
@@ -20,7 +20,7 @@ class Node:
 		self.data = data
 		self.next = None # None is nothing but null 
 
-# Creating a class for implementing the code for Insertion in a Linked List
+# Creating a class for implementing the code for Deletion in a Linked List
 class LinkedList: 
 	
 	# Whenever I'll create the object of a LinkedList class head will be pointing to null initially
@@ -79,12 +79,12 @@ class LinkedList:
 if __name__=='__main__': 
 
 	myList = LinkedList() 
-	myList.append(3);
-	myList.append(4);
-	myList.append(5);
-	myList.append(6);
-	myList.append(7);
-	myList.append(9); 
+	myList.append(3)
+	myList.append(4)
+	myList.append(5)
+	myList.append(6)
+	myList.append(7)
+	myList.append(9) 
 	print("Original List is: ", end = " ")
 	myList.printList()
 	myList.deleteNode(6)
