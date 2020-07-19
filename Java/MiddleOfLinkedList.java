@@ -6,14 +6,8 @@
 * 	Middle in a Linked List
 *
 *	Output: 
-*
-*	The list is: 3 4 5 6 7 
-*	Middle Of List is: 5
-*	The list is: 3 4 5 6 7 8 
-*	Middle Of List is: 6
-*
-* 	Note: In case of even number of nodes, we are printing the ((n/2)+1)th node. 
-*	If you want to print (n/2)th node you can customize your code as per your requirement.	
+*	true
+*		
 *
 *
 */
